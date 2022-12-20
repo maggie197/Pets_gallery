@@ -7,5 +7,4 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/login')
 def login():
-    from .static.loginform import loginform
     return  render_template('login.html')
