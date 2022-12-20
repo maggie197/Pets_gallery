@@ -8,7 +8,10 @@ def create_app():        #set a function inisializing flask
     app.config['SECRET_KEY'] = 'thisisasecretkey!'# to secure cookies and sesssion data
 
 #imported blueprints
-    from .app import app
+    from .views import views
+    from .auth import auth
 
-    app.register_blueprint(app, url_prefix='/')
+    app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(auth, url_prefix='/')
+    
     return app
