@@ -8,21 +8,33 @@ auth = Blueprint('auth', __name__)
 
 #Authorization
 
-@auth.route('/login')
+@auth.route('/login', methods=['POST', 'GET'])
 def login():
-    return  render_template('login.html')
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+    
+    return  render_template('index.html')
 
-@auth.route('/signup', methods=['GET', 'POST'])
+@auth.route('/signup', methods=['POST', 'GET'])
 def sign_up():
     if request.method == 'POST':
-        email = request.form.get('email')
-        first_name = request.form.get('firstName')
-        password1 = request.form.get('password1')
-        password2 = request.form.get('password2')
+        email = request.form['email']
+        first_name = request.form['first_name']
+        password1 = request.form['password1']
+        password2 = request.form['password2']
+    # push to db
+        try:
+            new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='sha256'))
+            db.session.add(new_user)
+            db.session.commit()
+            return redirect(url_for('views.home'))
+
+        except:
+            return "There was an error"
+
     else:
-        new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='sha256'))
-        db.session.add(new_user)
-        db.session.commit()
+
         return redirect(url_for('views.home'))
 
-    return render_template("signup.html")
+
