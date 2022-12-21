@@ -1,7 +1,8 @@
-{% block title %}{% endblock %} 
+{% extends "base.html" %}
+{% include "nav-bar.html" %}
+
 {% block content %}
 <h1>Home page</h1>
 
-<a  href="{{url_for('auth.logout')}}"><button class = "btn-primary"> Click here to log out!</button></a>
 
 {% endblock %}
