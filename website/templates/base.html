@@ -1,13 +1,16 @@
-{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  </head>
   <style>
-    * {
-      box-sizing: border-box;
-  }
-  
+ 
   body {
       font-family: Arial;
       padding: 10px;
-      background:  #c1c1dd;
+      background:  #ccccff;
   }
 
 
@@ -19,6 +22,43 @@
   background-color: #5e0e8ded;
   color: white;
 }
-</style>
-
-    {% endblock %}
+  </style>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  
+      <title>{% block title %}Home{% endblock %}</title>
+    </head>
+    <style>
+      * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial;
+        padding: 10px;
+        background:  #ccccff;
+    }
+  
+  
+  .btn-primary{
+    background-color:  #340d40;
+    color: white;
+  }
+  .btn-primary:hover {
+    background-color: #5e0e8ded;
+    color: white;
+  }
+    </style>
+  
+    <body>
+  
+      {% block content %}
+      {% endblock %}
+  
+    </body>
+  </html>
+</html>
