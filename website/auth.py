@@ -20,7 +20,7 @@ def login():
                 login_user(user, remember=True) 
 
                 return redirect(url_for('views.home'))
-    return  render_template('index.html')
+    return  render_template('index.html', user=current_user )
 
 @auth.route('/signup', methods=['POST', 'GET'])
 def sign_up():
@@ -51,4 +51,4 @@ def sign_up():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('auth.login'))
+    return redirect(url_for('auth.login', user=current_user ))
